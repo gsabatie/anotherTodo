@@ -4,6 +4,7 @@ platform :ios, '10.0'
 def testing_pods
     pod 'Quick'
     pod 'Nimble'
+    pod 'TextFieldEffects'
 end
 
 target 'anotherTodo' do
