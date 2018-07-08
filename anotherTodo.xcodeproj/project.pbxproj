@@ -56,6 +56,8 @@
 		F0DFF27CF80ED99AE0DE2715 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFF88A8A97DB734839DEC3 /* TaskService.swift */; };
 		F0DFFA1F3F7A7BD764EA9328 /* CreateTaskServiceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFFB7999F766EFAC19D0AB /* CreateTaskServiceInput.swift */; };
 		F0DFFBA55C5913BCA3A164A2 /* const.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFF099BB47E7BDCF4A6B79 /* const.swift */; };
+		F0DFFBC78CAF9E7354646B76 /* DeleteTaskServiceOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFF525F8B4E267958EDE16 /* DeleteTaskServiceOutput.swift */; };
+		F0DFFD1FE8A1C330E21767E2 /* DeleteTaskServiceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFFC4E8FF2BE15AF8F2A83 /* DeleteTaskServiceInput.swift */; };
 		F0DFFDDBE356FAF7D59A438F /* GetTaskServiceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFF372F84B316398FA93FD /* GetTaskServiceInput.swift */; };
 		F0DFFFF172D24FF696FA2A34 /* CreateTaskServiceOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFF12F544B706107892D71 /* CreateTaskServiceOutput.swift */; };
 		F36DDE12C280ABEE9340D8BC /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F9643519B411EDA9665D6 /* CreateTaskViewController.swift */; };
@@ -130,9 +132,11 @@
 		F0DFF099BB47E7BDCF4A6B79 /* const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = const.swift; sourceTree = "<group>"; };
 		F0DFF12F544B706107892D71 /* CreateTaskServiceOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTaskServiceOutput.swift; sourceTree = "<group>"; };
 		F0DFF372F84B316398FA93FD /* GetTaskServiceInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTaskServiceInput.swift; sourceTree = "<group>"; };
+		F0DFF525F8B4E267958EDE16 /* DeleteTaskServiceOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTaskServiceOutput.swift; sourceTree = "<group>"; };
 		F0DFF88A8A97DB734839DEC3 /* TaskService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
 		F0DFFB3B87E5BB879C208975 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		F0DFFB7999F766EFAC19D0AB /* CreateTaskServiceInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTaskServiceInput.swift; sourceTree = "<group>"; };
+		F0DFFC4E8FF2BE15AF8F2A83 /* DeleteTaskServiceInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTaskServiceInput.swift; sourceTree = "<group>"; };
 		F34798F21C3B6EC6895BAFE4 /* TaskListPresenterTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TaskListPresenterTests.swift; sourceTree = "<group>"; };
 		FB38168A9F4E5337932E0035 /* CreateTaskPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreateTaskPresenter.swift; sourceTree = "<group>"; };
 		FE81579A25E2D35DEA140218 /* Pods_anotherTodo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_anotherTodo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -542,6 +546,8 @@
 				F0DFFB3B87E5BB879C208975 /* Error.swift */,
 				F0DFF372F84B316398FA93FD /* GetTaskServiceInput.swift */,
 				F0DFF0403C1CD122255657D4 /* GetTaskServiceOutput.swift */,
+				F0DFFC4E8FF2BE15AF8F2A83 /* DeleteTaskServiceInput.swift */,
+				F0DFF525F8B4E267958EDE16 /* DeleteTaskServiceOutput.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -769,6 +775,8 @@
 				013AC0D23336F072FAC8812E /* TaskListInitializer.swift in Sources */,
 				F0DFFDDBE356FAF7D59A438F /* GetTaskServiceInput.swift in Sources */,
 				F0DFF1482E24B8D365A5EED7 /* GetTaskServiceOutput.swift in Sources */,
+				F0DFFD1FE8A1C330E21767E2 /* DeleteTaskServiceInput.swift in Sources */,
+				F0DFFBC78CAF9E7354646B76 /* DeleteTaskServiceOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

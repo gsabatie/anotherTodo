@@ -10,4 +10,5 @@ import Foundation
 
 protocol TaskListInteractorInput {
     func get()
+    func deleteTask(at index:Int)
 }
