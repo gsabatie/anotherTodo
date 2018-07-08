@@ -8,7 +8,10 @@
 
 import Foundation
 
+
 protocol TaskListInteractorOutput: class {
     func getTaskDidSucceed(fetchedTasks: [TaskWrapper])
     func getTaskDidFailed(error: Error.GetTask)
+    func deleteTaskDidSucceed(with index: Int)
+    func deleteTaskDidDFailed(with index: Int,  and error: Error.DeleteTask)
 }

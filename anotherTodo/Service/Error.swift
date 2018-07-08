@@ -12,4 +12,7 @@ enum Error {
     enum GetTask {
         case CannotFetch
     }
+    enum DeleteTask {
+        case CannotDelete
+    }
 }

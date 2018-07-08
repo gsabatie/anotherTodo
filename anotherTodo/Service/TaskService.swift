@@ -10,26 +10,31 @@ import UIKit
 struct TaskWrapper {
     var name: String
     var dueDate: Date
+    var id: NSManagedObjectID
 
     init(managedObject: NSManagedObject) {
         self.name = ""
+        self.id = NSManagedObjectID()
         self.dueDate = Date()
         if let name = managedObject.value(forKey: TaskService.PropertyKeyPath.Name) as? String,
            let dueDate = managedObject.value(forKey: TaskService.PropertyKeyPath.DueDate) as? Date {
             self.name = name
             self.dueDate = dueDate
+            self.id = managedObject.objectID
         }
     }
 
     init(name: String, dueDate: Date) {
         self.name = name
         self.dueDate = dueDate
+        self.id = NSManagedObjectID()
     }
 }
 
 class TaskService {
     var output: CreateTaskServiceOutput!
     var getOutput: GetTaskServiceOutput!
+    var deleteOutput: DeleteTaskServiceOutput!
 
     static let TaskEntityName = "Task"
 
@@ -77,6 +82,20 @@ extension TaskService: GetTaskServiceInput {
             getOutput.getTaskDidSucceed(tasks: task)
         } catch {
             getOutput.getTaskDidFailed(error: Error.GetTask.CannotFetch)
+        }
+    }
+}
+
+extension TaskService: DeleteTaskServiceInput {
+    func delete(with id: NSManagedObjectID) {
+        let managedContext = self.appDelegate.persistentContainer.viewContext
+        let taskToDelete = managedContext.object(with: id)
+        managedContext.delete(taskToDelete)
+        do {
+            try managedContext.save()
+            deleteOutput.deleteTaskDidSucceed(with: id)
+        } catch {
+            deleteOutput.deleteTaskDidFailed(with: id, and: Error.DeleteTask.CannotDelete)
         }
     }
 }

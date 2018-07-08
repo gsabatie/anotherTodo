@@ -47,10 +47,19 @@ extension TaskListViewController: TaskListViewInput {
     func display(message: String) {
 
     }
+
+    func removeRow(at indexPath: IndexPath) {
+        displayedTask.remove(at: indexPath.row)
+        tableVIew.deleteRows(at: [indexPath], with: .fade)
+    }
 }
 
 extension TaskListViewController: UITableViewDelegate {
-   
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            output.deleteTaskButtonTouched(at: indexPath)
+        }
+    }
 }
 
 extension TaskListViewController: UITableViewDataSource {

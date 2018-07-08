@@ -18,7 +18,6 @@ class TaskListModuleConfigurator {
     }
 
     private func configure(viewController: TaskListViewController) {
-
         let router = TaskListRouter()
         router.viewController = viewController
         router.createTaskRouter = CreateTaskRouter()
@@ -32,6 +31,7 @@ class TaskListModuleConfigurator {
 
         let taskService = TaskService()
         taskService.getOutput = interactor
+        taskService.deleteOutput = interactor
 
         presenter.interactor = interactor
         viewController.output = presenter
