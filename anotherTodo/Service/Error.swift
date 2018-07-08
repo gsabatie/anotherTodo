@@ -9,4 +9,7 @@ enum Error {
     enum CreateTask {
         case SaveError
     }
+    enum GetTask {
+        case CannotFetch
+    }
 }

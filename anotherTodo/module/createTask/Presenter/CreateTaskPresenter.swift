@@ -41,7 +41,7 @@ extension CreateTaskPresenter: CreateTaskViewOutput {
 
 extension CreateTaskPresenter: CreateTaskInteractorOutput {
     func saveDidSucceed() {
-        view.display(with: "success")
+        router.presentParentViewController()
     }
 
     func saveDidFailed(with error: Error.CreateTask) {

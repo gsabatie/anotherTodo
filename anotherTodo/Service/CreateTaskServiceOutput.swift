@@ -8,5 +8,4 @@ import Foundation
 protocol CreateTaskServiceOutput {
     func createTaskDidSucceed()
     func createTaskDidFailed(error: Error.CreateTask)
-
 }
