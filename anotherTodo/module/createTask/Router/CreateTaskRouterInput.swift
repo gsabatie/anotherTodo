@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
 protocol CreateTaskRouterInput {
-
+    func presentCreateTaskModule(fromViewController viewController: UIViewController)
+    func presentParentViewController()
 }
