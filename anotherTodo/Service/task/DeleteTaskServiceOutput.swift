@@ -5,7 +5,8 @@
 
 import Foundation
 import CoreData
-protocol DeleteTaskServiceOutput {
-    func deleteTaskDidSucceed(with id:NSManagedObjectID)
-    func deleteTaskDidFailed(with id:NSManagedObjectID, and error: Error.DeleteTask)
+
+protocol DeleteTaskServiceOutput: class  {
+    func deleteTaskDidSucceed(with id:String)
+    func deleteTaskDidFailed(with id:String, and error: Error.DeleteTask)
 }

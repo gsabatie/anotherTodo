@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol CreateTaskServiceOutput {
-    func createTaskDidSucceed()
+protocol CreateTaskServiceOutput: class {
+    func createTaskDidSucceed(createdTask:TaskWrapper)
     func createTaskDidFailed(error: Error.CreateTask)
 }

@@ -20,6 +20,9 @@ class CreateTaskModuleConfigurator {
     private func configure(viewController: CreateTaskViewController) {
 
         let taskService = TaskService()
+
+        let notificationService = NotificationService()
+
         let router = CreateTaskRouter()
         router.viewController = viewController
 
@@ -30,6 +33,7 @@ class CreateTaskModuleConfigurator {
         let interactor = CreateTaskInteractor()
         interactor.output = presenter
         interactor.createTaskService = taskService
+        interactor.notificationService = notificationService
 
         presenter.interactor = interactor
         viewController.output = presenter

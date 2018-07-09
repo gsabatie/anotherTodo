@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol GetTaskServiceOutput {
-    func getTaskDidSucceed(tasks:[TaskWrapper])
+protocol GetTaskServiceOutput: class {
+    func getTaskDidSucceed(tasks: [TaskWrapper])
     func getTaskDidFailed(error: Error.GetTask)
 }

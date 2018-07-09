@@ -38,13 +38,13 @@ extension TaskListInteractor: GetTaskServiceOutput {
 
 extension TaskListInteractor: DeleteTaskServiceOutput {
 
-    private func indexForTask(with id: NSManagedObjectID) -> Int? {
+    private func indexForTask(with id: String) -> Int? {
         return tasks.index { (task) -> Bool in
-            task.id.uriRepresentation() == id.uriRepresentation()
+            task.id == id
         }
     }
 
-    func deleteTaskDidSucceed(with id: NSManagedObjectID) {
+    func deleteTaskDidSucceed(with id: String) {
         guard let index = indexForTask(with: id) else {
             deleteTaskDidFailed(with: id, and: Error.DeleteTask.CannotDelete)
             return
@@ -52,7 +52,7 @@ extension TaskListInteractor: DeleteTaskServiceOutput {
         output.deleteTaskDidSucceed(with: index)
     }
 
-    func deleteTaskDidFailed(with id: NSManagedObjectID, and error: Error.DeleteTask) {
+    func deleteTaskDidFailed(with id: String, and error: Error.DeleteTask) {
         guard let index = indexForTask(with: id) else {
             return
         }

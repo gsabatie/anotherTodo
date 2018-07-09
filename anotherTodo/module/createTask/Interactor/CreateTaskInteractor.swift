@@ -10,6 +10,7 @@ class CreateTaskInteractor {
 
     weak var output: CreateTaskInteractorOutput!
     var createTaskService: CreateTaskServiceInput!
+    var notificationService: NotificationServiceInput!
 
 
 }
@@ -22,9 +23,16 @@ extension CreateTaskInteractor: CreateTaskInteractorInput {
 }
 
 extension CreateTaskInteractor: CreateTaskServiceOutput {
-    func createTaskDidSucceed() {
+    func createTaskDidSucceed(createdTask: TaskWrapper) {
+
+        notificationService.create(with: "the task \(createdTask.name) is overdue",
+                                   title: "Task overdue",
+                                   categoryIdentifier: NotificationService.CategoryIdentifier.task,
+                                   fireDate: createdTask.dueDate,
+                                   id: createdTask.id)
         output.saveDidSucceed()
     }
+
 
     func createTaskDidFailed(error: Error.CreateTask) {
         output.saveDidFailed(with: error)
