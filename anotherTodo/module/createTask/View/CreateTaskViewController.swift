@@ -18,7 +18,7 @@ class CreateTaskViewController: UIViewController {
 
     var output: CreateTaskViewOutput!
 
-    private var dueDate : Date?
+    private var dueDate: Date?
 
     // MARK: Life cycle
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ extension CreateTaskViewController: CreateTaskViewInput {
     }
 
     func getDueDate() -> Date? {
-        return  dueDate
+        return dueDate
     }
 
 
@@ -67,7 +67,8 @@ extension CreateTaskViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         let picker = DateTimePicker.show()
-        picker.isDatePickerOnly = true
+        picker.timeZone = TimeZone.current
+        picker.selectedDate = Date()
         picker.highlightColor = UIColor(red: 165.0 / 255.0, green: 152.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)
         picker.completionHandler = { date in
             self.dueDate = date

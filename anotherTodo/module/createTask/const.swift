@@ -6,7 +6,7 @@
 import Foundation
 
 class DATE_FORMAT {
-    static let TASKDATE = "MM/dd/yyyy"
+    static let TASKDATE = "MM/dd/yyyy hh:mm"
 }
 
 class ERROR_MESSAGE {

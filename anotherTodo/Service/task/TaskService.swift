@@ -10,31 +10,34 @@ import UIKit
 struct TaskWrapper {
     var name: String
     var dueDate: Date
-    var id: NSManagedObjectID
+    var id: String
 
     init(managedObject: NSManagedObject) {
         self.name = ""
-        self.id = NSManagedObjectID()
+        self.id = ""
         self.dueDate = Date()
         if let name = managedObject.value(forKey: TaskService.PropertyKeyPath.Name) as? String,
            let dueDate = managedObject.value(forKey: TaskService.PropertyKeyPath.DueDate) as? Date {
             self.name = name
             self.dueDate = dueDate
-            self.id = managedObject.objectID
+            if !managedObject.objectID.isTemporaryID {
+                self.id = managedObject.objectID.uriRepresentation().absoluteString
+            }
         }
     }
 
     init(name: String, dueDate: Date) {
         self.name = name
         self.dueDate = dueDate
-        self.id = NSManagedObjectID()
+        self.id = ""
     }
+
 }
 
 class TaskService {
-    var output: CreateTaskServiceOutput!
-    var getOutput: GetTaskServiceOutput!
-    var deleteOutput: DeleteTaskServiceOutput!
+    weak var output: CreateTaskServiceOutput!
+    weak var getOutput: GetTaskServiceOutput!
+    weak var deleteOutput: DeleteTaskServiceOutput!
 
     static let TaskEntityName = "Task"
 
@@ -47,6 +50,29 @@ class TaskService {
         return UIApplication.shared.delegate as! AppDelegate
     }
 
+    func identifier(for object: NSManagedObject) -> String? {
+        let managedContext = self.appDelegate.persistentContainer.viewContext
+        if object.objectID.isTemporaryID {
+            do {
+                try managedContext.obtainPermanentIDs(for: [object])
+            } catch {
+                return nil
+            }
+
+        }
+        return object.objectID.uriRepresentation().absoluteString
+    }
+
+    func objecID(from identifier:String) -> NSManagedObject? {
+        let managedContext = self.appDelegate.persistentContainer.viewContext
+       guard let objectURI = URL(string: identifier) else {
+           return nil
+       }
+       guard let objectID = managedContext.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: objectURI) else {
+           return nil
+       }
+        return managedContext.object(with: objectID)
+    }
 }
 
 extension TaskService: CreateTaskServiceInput {
@@ -62,7 +88,13 @@ extension TaskService: CreateTaskServiceInput {
 
         do {
             try managedContext.save()
-            output.createTaskDidSucceed()
+            guard  let id = identifier(for: taskDB) else {
+                output.createTaskDidFailed(error: Error.CreateTask.SaveError)
+                return
+            }
+            var updatedTask = task
+            updatedTask.id = id
+            output.createTaskDidSucceed(createdTask: updatedTask)
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
             output.createTaskDidFailed(error: Error.CreateTask.SaveError)
@@ -87,9 +119,12 @@ extension TaskService: GetTaskServiceInput {
 }
 
 extension TaskService: DeleteTaskServiceInput {
-    func delete(with id: NSManagedObjectID) {
+    func delete(with id: String) {
         let managedContext = self.appDelegate.persistentContainer.viewContext
-        let taskToDelete = managedContext.object(with: id)
+        guard let taskToDelete = objecID(from: id) else {
+            deleteOutput.deleteTaskDidFailed(with: id, and: Error.DeleteTask.CannotDelete)
+            return
+        }
         managedContext.delete(taskToDelete)
         do {
             try managedContext.save()

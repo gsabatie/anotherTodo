@@ -7,5 +7,5 @@ import Foundation
 import CoreData
 
 protocol DeleteTaskServiceInput {
-    func delete(with id:NSManagedObjectID)
+    func delete(with id: String)
 }
