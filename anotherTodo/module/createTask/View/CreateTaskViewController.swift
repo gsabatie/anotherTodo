@@ -66,6 +66,8 @@ extension CreateTaskViewController: UITextFieldDelegate {
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        self.view.endEditing(true)
+
         let picker = DateTimePicker.show()
         picker.timeZone = TimeZone.current
         picker.selectedDate = Date()
