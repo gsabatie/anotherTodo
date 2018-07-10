@@ -60,6 +60,21 @@ extension TaskListViewController: UITableViewDelegate {
             output.deleteTaskButtonTouched(at: indexPath)
         }
     }
+
+    func tableView(_ tableView: UITableView,
+                   editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "Share" , handler: {[weak self] (action:UITableViewRowAction, indexPath: IndexPath) -> Void in
+            let activityViewController = UIActivityViewController(
+                    activityItems: ["todo"],
+                    applicationActivities: nil)
+
+            self?.present(activityViewController, animated: true, completion: nil)
+        })
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: "Delete" , handler: { [weak self] (action:UITableViewRowAction, indexPath: IndexPath) -> Void in
+            self?.output.deleteTaskButtonTouched(at: indexPath)
+        })
+        return [shareAction, deleteAction]
+    }
 }
 
 extension TaskListViewController: UITableViewDataSource {

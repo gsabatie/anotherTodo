@@ -51,10 +51,13 @@
 		DC41686AE1CE7B1147A05B5D /* createTaskPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E958275CA462A29D4F2DA857 /* createTaskPresenterTests.swift */; };
 		DE71AD231F9CD04CD3E59212 /* CreateTaskInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C860239360272A229978E /* CreateTaskInteractorTests.swift */; };
 		E066C177E8CF840307C49EA3 /* Pods_anotherTodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE81579A25E2D35DEA140218 /* Pods_anotherTodo.framework */; };
+		F0DFF01E09CAFFA5333C556F /* ShareTaskServiceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFFCB726EA112719DA8517 /* ShareTaskServiceInput.swift */; };
 		F0DFF121B07D9B66A79D809C /* DeleteTaskServiceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFF3D6980C11483155715B /* DeleteTaskServiceInput.swift */; };
 		F0DFF3AF882A171E929BFBD1 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFFCF82554FA31A2885B9A /* Error.swift */; };
+		F0DFF48DDC367C61989D436D /* ShareTaskServiceOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFF6F8E65515549B4FD64F /* ShareTaskServiceOutput.swift */; };
 		F0DFF59F2A506D5F184A7C29 /* GetTaskServiceOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFFEFAC8D27642382AB137 /* GetTaskServiceOutput.swift */; };
 		F0DFF6A6E45240D9BA422E65 /* CreateTaskServiceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFF1E328182544C772392C /* CreateTaskServiceInput.swift */; };
+		F0DFF8137A4611C3899EED0B /* ShareTaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFF52852E3092536A620BC /* ShareTaskService.swift */; };
 		F0DFFA1E68FE1EC50885A59C /* NotificationServiceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFF8E27539299585AB269A /* NotificationServiceInput.swift */; };
 		F0DFFA3BD64D39BA122ABC90 /* DeleteTaskServiceOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFFC39054BB73A904285BF /* DeleteTaskServiceOutput.swift */; };
 		F0DFFB3FCE459345177B64E4 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFF6156630E6B78D928BE4 /* TaskService.swift */; };
@@ -134,11 +137,14 @@
 		F0DFF1E328182544C772392C /* CreateTaskServiceInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTaskServiceInput.swift; sourceTree = "<group>"; };
 		F0DFF2718788505341095DBB /* CreateTaskServiceOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTaskServiceOutput.swift; sourceTree = "<group>"; };
 		F0DFF3D6980C11483155715B /* DeleteTaskServiceInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTaskServiceInput.swift; sourceTree = "<group>"; };
+		F0DFF52852E3092536A620BC /* ShareTaskService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareTaskService.swift; sourceTree = "<group>"; };
 		F0DFF6156630E6B78D928BE4 /* TaskService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
+		F0DFF6F8E65515549B4FD64F /* ShareTaskServiceOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareTaskServiceOutput.swift; sourceTree = "<group>"; };
 		F0DFF8E27539299585AB269A /* NotificationServiceInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationServiceInput.swift; sourceTree = "<group>"; };
 		F0DFF9E536C1846790100E31 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		F0DFFA5B1AB013E69852550F /* GetTaskServiceInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTaskServiceInput.swift; sourceTree = "<group>"; };
 		F0DFFC39054BB73A904285BF /* DeleteTaskServiceOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTaskServiceOutput.swift; sourceTree = "<group>"; };
+		F0DFFCB726EA112719DA8517 /* ShareTaskServiceInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareTaskServiceInput.swift; sourceTree = "<group>"; };
 		F0DFFCF82554FA31A2885B9A /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		F0DFFEFAC8D27642382AB137 /* GetTaskServiceOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTaskServiceOutput.swift; sourceTree = "<group>"; };
 		F34798F21C3B6EC6895BAFE4 /* TaskListPresenterTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TaskListPresenterTests.swift; sourceTree = "<group>"; };
@@ -565,11 +571,22 @@
 			path = task;
 			sourceTree = "<group>";
 		};
+		F0DFFC6FA6709D86F20270B3 /* shareTask */ = {
+			isa = PBXGroup;
+			children = (
+				F0DFF52852E3092536A620BC /* ShareTaskService.swift */,
+				F0DFFCB726EA112719DA8517 /* ShareTaskServiceInput.swift */,
+				F0DFF6F8E65515549B4FD64F /* ShareTaskServiceOutput.swift */,
+			);
+			path = shareTask;
+			sourceTree = "<group>";
+		};
 		F0DFFD99E3CD8020B5BD0E65 /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				F0DFFC16A33CBDA2C0FE0327 /* task */,
 				F0DFFBA5CD9DEBE754A9AB9B /* notification */,
+				F0DFFC6FA6709D86F20270B3 /* shareTask */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -801,6 +818,9 @@
 				F0DFFB3FCE459345177B64E4 /* TaskService.swift in Sources */,
 				F0DFFE46AC9F088D6A985C3E /* NotificationService.swift in Sources */,
 				F0DFFA1E68FE1EC50885A59C /* NotificationServiceInput.swift in Sources */,
+				F0DFF8137A4611C3899EED0B /* ShareTaskService.swift in Sources */,
+				F0DFF01E09CAFFA5333C556F /* ShareTaskServiceInput.swift in Sources */,
+				F0DFF48DDC367C61989D436D /* ShareTaskServiceOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
